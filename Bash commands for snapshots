@@ -5,9 +5,9 @@ STEPS :
 - Load the sand box 
 -  start lab 
 - cloud9 (service)
-- create the cloud 9 environment)
+- create the cloud 9 environment
 - Follow the below commands :
-
+- create a volume 
 
 voclabs:~/environment $ sudo su
 [root@ip-172-31-73-224 environment]# lsblk
