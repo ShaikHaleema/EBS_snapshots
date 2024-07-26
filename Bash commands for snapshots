@@ -1,4 +1,14 @@
 # EBS_snapshots
+STEPS :
+- login to aws student account
+- AWS developement environment
+- Load the sand box 
+-  start lab 
+- cloud9 (service)
+- create the cloud 9 environment)
+- Follow the below commands :
+
+
 voclabs:~/environment $ sudo su
 [root@ip-172-31-73-224 environment]# lsblk
 NAME      MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
@@ -33,7 +43,7 @@ bin  boot  dev  etc  home  lib  lib64  local  media  mnt  opt  proc  root  run  
 [root@ip-172-31-73-224 ec2-user]# cd environment
 [root@ip-172-31-73-224 environment]# ls
 README.md
-[root@ip-172-31-73-224 environment]# mkdir -p /mnt/sai
+[root@ip-172-31-73-224 environment]# mkdir -p /mnt/dir2
 [root@ip-172-31-73-224 environment]# mkfs -t ext4 /dev/xvdb
 mke2fs 1.46.5 (30-Dec-2021)
 Creating filesystem with 1310720 4k blocks and 327680 inodes
@@ -46,19 +56,16 @@ Writing inode tables: done
 Creating journal (16384 blocks): done
 Writing superblocks and filesystem accounting information: done 
 
-[root@ip-172-31-73-224 environment]# mount /dev/xvdb /mnt/sai
+[root@ip-172-31-73-224 environment]# mount /dev/xvdb /mnt/dir2
 [root@ip-172-31-73-224 environment]# lsblk
 NAME      MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
 xvda      202:0    0  10G  0 disk 
 ├─xvda1   202:1    0  10G  0 part /
 ├─xvda127 259:0    0   1M  0 part 
 └─xvda128 259:1    0  10M  0 part /boot/efi
-xvdb      202:16   0   5G  0 disk /mnt/sai
-[root@ip-172-31-73-224 environment]# cd sai
-bash: cd: sai: No such file or directory
-[root@ip-172-31-73-224 environment]# cd sai
-bash: cd: sai: No such file or directory
-[root@ip-172-31-73-224 environment]# cd /mnt/sai
+xvdb      202:16   0   5G  0 disk /mnt/dir2
+
+[root@ip-172-31-73-224 environment]# cd /mnt/dir2
 [root@ip-172-31-73-224 sai]# cat >> file1
 This is file one 
 ^C
@@ -67,52 +74,51 @@ This is file one
 and go to snapshot - create volume to the snapshot*]
 
 
-[root@ip-172-31-73-224 sai]# rm file1
+[root@ip-172-31-73-224 dir2]# rm file1
 rm: remove regular file 'file1'? y
-[root@ip-172-31-73-224 sai]# ls
+[root@ip-172-31-73-224 dir2]# ls
 lost+found
-[root@ip-172-31-73-224 sai]# lsblk
+[root@ip-172-31-73-224 dir2]# lsblk
 NAME      MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
 xvda      202:0    0  10G  0 disk 
 ├─xvda1   202:1    0  10G  0 part /
 ├─xvda127 259:0    0   1M  0 part 
 └─xvda128 259:1    0  10M  0 part /boot/efi
-xvdb      202:16   0   5G  0 disk /mnt/sai
+xvdb      202:16   0   5G  0 disk /mnt/dir2
 xvdc      202:32   0   6G  0 disk 
-[root@ip-172-31-73-224 sai]# mkdir -p /mnt/dir1
-[root@ip-172-31-73-224 sai]# lsblk
+[root@ip-172-31-73-224 dir2]# mkdir -p /mnt/dir1
+[root@ip-172-31-73-224 dir2]# lsblk
 NAME      MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
 xvda      202:0    0  10G  0 disk 
 ├─xvda1   202:1    0  10G  0 part /
 ├─xvda127 259:0    0   1M  0 part 
 └─xvda128 259:1    0  10M  0 part /boot/efi
-xvdb      202:16   0   5G  0 disk /mnt/sai
+xvdb      202:16   0   5G  0 disk /mnt/dir2
 xvdc      202:32   0   6G  0 disk 
-[root@ip-172-31-73-224 sai]# mount /dev/xvdc /mnt/dir1
-[root@ip-172-31-73-224 sai]# lsblk
+[root@ip-172-31-73-224 dir2]# mount /dev/xvdc /mnt/dir1
+[root@ip-172-31-73-224 dir2]# lsblk
 NAME      MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
 xvda      202:0    0  10G  0 disk 
 ├─xvda1   202:1    0  10G  0 part /
 ├─xvda127 259:0    0   1M  0 part 
 └─xvda128 259:1    0  10M  0 part /boot/efi
-xvdb      202:16   0   5G  0 disk /mnt/sai
+xvdb      202:16   0   5G  0 disk /mnt/dir2
 xvdc      202:32   0   6G  0 disk /mnt/dir1
-[root@ip-172-31-73-224 sai]# cd /mnt/dir1
+[root@ip-172-31-73-224 dir2]# cd /mnt/dir1
 [root@ip-172-31-73-224 dir1]# ls
 file1  lost+found
 [root@ip-172-31-73-224 dir1]# cat file1
 This is file one 
-[root@ip-172-31-73-224 dir1]# cp /mnt/dir1/file1 /mnt/sai
+[root@ip-172-31-73-224 dir1]# cp /mnt/dir1/file1 /mnt/dir2
 [root@ip-172-31-73-224 dir1]# ls
 file1  lost+found
 [root@ip-172-31-73-224 dir1]# cd ..
 [root@ip-172-31-73-224 mnt]# ls
-dir1  sai
+dir1  dir2
 [root@ip-172-31-73-224 mnt]# cd sai
-[root@ip-172-31-73-224 sai]# ls
+[root@ip-172-31-73-224 dir2]# ls
 file1  lost+found
-[root@ip-172-31-73-224 sai]# cat sai
-cat: sai: No such file or directory
-[root@ip-172-31-73-224 sai]# cat file1
+
+[root@ip-172-31-73-224 dir2]# cat file1
 This is file one 
-[root@ip-172-31-73-224 sai]# 
+[root@ip-172-31-73-224 dir2]# 
