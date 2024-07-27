@@ -115,7 +115,7 @@ file1  lost+found
 [root@ip-172-31-73-224 dir1]# cd ..
 [root@ip-172-31-73-224 mnt]# ls
 dir1  dir2
-[root@ip-172-31-73-224 mnt]# cd sai
+[root@ip-172-31-73-224 mnt]# cd dir2
 [root@ip-172-31-73-224 dir2]# ls
 file1  lost+found
 
