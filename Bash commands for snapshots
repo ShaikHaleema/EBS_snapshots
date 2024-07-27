@@ -6,8 +6,9 @@ STEPS :
 -  start lab 
 - cloud9 (service)
 - create the cloud 9 environment
-- Follow the below commands :
 - create a volume 
+- attatch the volume
+- Follow the below commands :
 
 voclabs:~/environment $ sudo su
 [root@ip-172-31-73-224 environment]# lsblk
@@ -53,12 +54,12 @@ Superblock backups stored on blocks:
 
 Allocating group tables: done                            
 Writing inode tables: done                            
-Creating journal (16384 blocks): done
+Creating journal (16384 blocks): done   
 Writing superblocks and filesystem accounting information: done 
 
 [root@ip-172-31-73-224 environment]# mount /dev/xvdb /mnt/dir2
-[root@ip-172-31-73-224 environment]# lsblk
-NAME      MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
+[root@ip-172-31-73-224 environment]# lsblk 
+NAME      MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS  
 xvda      202:0    0  10G  0 disk 
 ├─xvda1   202:1    0  10G  0 part /
 ├─xvda127 259:0    0   1M  0 part 
@@ -66,7 +67,7 @@ xvda      202:0    0  10G  0 disk
 xvdb      202:16   0   5G  0 disk /mnt/dir2
 
 [root@ip-172-31-73-224 environment]# cd /mnt/dir2
-[root@ip-172-31-73-224 sai]# cat >> file1
+[root@ip-172-31-73-224 dir1]# cat >> file1
 This is file one 
 ^C
 
